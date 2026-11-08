@@ -47,3 +47,22 @@ for j in range(N):
 
 M1 = M1_sum / N
 M2_diagonal = M2_sum / N
+
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+
+im0 = axes[0].imshow(np.abs(M1)**2)
+axes[0].set_title("Squared magnitude of first moment")
+
+im1 = axes[1].imshow(M2_diagonal)
+axes[1].set_title("Second moment (expected intensity)")
+
+im2 = axes[2].imshow(np.angle(M1))
+axes[2].set_title("Phase of first moment")
+
+plt.colorbar(im0, ax=axes[0])
+plt.colorbar(im1, ax=axes[1])
+plt.colorbar(im2, ax=axes[2])
+plt.tight_layout()
+plt.show()
